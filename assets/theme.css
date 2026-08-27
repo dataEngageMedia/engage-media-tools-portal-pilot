@@ -1,20 +1,27 @@
 /* ==========================================================================
    ENGAGE MEDIA — BRAND TOKENS
-   Replace the values in this block ONLY when official brand assets arrive.
-   Nothing else in this file, index.html, or app.js should need to change.
+   Sourced from "Engage Media Brand Guidelines 2025":
+   Miami Vice Blue #41B6E6, Miami Heat Black #000000, Miami Vice Fuchsia #DB3EB1,
+   typeface Poppins, signature "Halo" neon glow on the pin logo.
+   If the exact brand colors/fonts ever change, this is the ONLY block to edit.
    ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
 :root {
-  --em-color-primary:    #1d4ed8;   /* TODO: Engage Media primary */
-  --em-color-primary-dk: #1e3a8a;   /* TODO: hover / darker shade */
-  --em-color-accent:     #f97316;   /* TODO: Engage Media accent */
-  --em-color-bg:         #f8fafc;
-  --em-color-surface:    #ffffff;
-  --em-color-text:       #0f172a;
-  --em-color-text-muted: #64748b;
-  --em-color-border:     #e2e8f0;
-  --em-font-heading: "Inter", "Segoe UI", system-ui, sans-serif; /* TODO: brand font */
-  --em-font-body:    "Inter", "Segoe UI", system-ui, sans-serif;
-  --em-radius: 12px;
+  --em-color-primary:      #41B6E6; /* Miami Vice Blue — the brand's neon halo color */
+  --em-color-primary-dk:   #2C93BE;
+  --em-color-accent:       #DB3EB1; /* Miami Vice Fuchsia — secondary accent, used sparingly */
+  --em-color-bg:           #05070F;
+  --em-color-surface:      #0D1224;
+  --em-color-surface-alt:  #121933;
+  --em-color-text:         #F4F7FB;
+  --em-color-text-muted:   #8B93B8;
+  --em-color-border:       rgba(65, 182, 230, 0.22);
+  --em-glow-sm: 0 0 6px rgba(65, 182, 230, 0.65);
+  --em-glow-lg: 0 0 22px rgba(65, 182, 230, 0.35);
+  --em-font-heading: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --em-font-body:    "Poppins", "Segoe UI", system-ui, sans-serif;
+  --em-radius: 14px;
 }
 
 * { box-sizing: border-box; }
@@ -26,20 +33,57 @@ body {
   color: var(--em-color-text);
 }
 
+/* Subtle basket-weave texture, echoing the brand deck's background pattern */
 header.site-header {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 24px 32px;
-  background: var(--em-color-surface);
+  gap: 18px;
+  padding: 28px 32px;
+  background:
+    repeating-linear-gradient(90deg, rgba(65,182,230,0.05) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(0deg, rgba(65,182,230,0.05) 0 2px, transparent 2px 22px),
+    linear-gradient(135deg, #0A0F24, #060811);
   border-bottom: 1px solid var(--em-color-border);
 }
-header.site-header img.logo { height: 36px; width: 36px; }
-header.site-header h1 { font-family: var(--em-font-heading); font-size: 1.25rem; margin: 0; }
 
-nav.top-nav { margin-left: auto; display: flex; gap: 20px; }
-nav.top-nav a { color: var(--em-color-text-muted); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
-nav.top-nav a:hover { color: var(--em-color-primary); }
+header.site-header img.logo {
+  height: 46px;
+  width: 46px;
+  filter: drop-shadow(0 0 4px rgba(65,182,230,0.9)) drop-shadow(0 0 14px rgba(65,182,230,0.5));
+}
+
+.brand-block { display: flex; flex-direction: column; }
+header.site-header h1 {
+  font-family: var(--em-font-heading);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--em-color-text);
+}
+header.site-header .tagline {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--em-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+nav.top-nav { margin-left: auto; display: flex; gap: 24px; }
+nav.top-nav a {
+  color: var(--em-color-text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+nav.top-nav a:hover { color: var(--em-color-primary); text-shadow: var(--em-glow-sm); }
+
+.wave-divider { display: block; width: 100%; height: 28px; }
 
 main { max-width: 1100px; margin: 0 auto; padding: 32px; }
 
@@ -48,31 +92,42 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px; }
 #search {
   flex: 1;
   min-width: 220px;
-  padding: 10px 14px;
+  padding: 11px 16px;
   border: 1px solid var(--em-color-border);
   border-radius: var(--em-radius);
   font-size: 0.95rem;
+  font-family: var(--em-font-body);
+  background: var(--em-color-surface);
+  color: var(--em-color-text);
 }
+#search::placeholder { color: var(--em-color-text-muted); }
+#search:focus { outline: none; border-color: var(--em-color-primary); box-shadow: var(--em-glow-sm); }
 
 .category-filter { display: flex; gap: 8px; flex-wrap: wrap; }
 .category-filter button {
-  padding: 8px 14px;
+  padding: 9px 16px;
   border-radius: 999px;
   border: 1px solid var(--em-color-border);
   background: var(--em-color-surface);
   color: var(--em-color-text-muted);
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  font-family: var(--em-font-body);
+  font-weight: 500;
+  transition: all 0.15s ease;
 }
+.category-filter button:hover { border-color: var(--em-color-primary); color: var(--em-color-text); }
 .category-filter button.active {
   background: var(--em-color-primary);
   border-color: var(--em-color-primary);
-  color: #fff;
+  color: #041018;
+  font-weight: 700;
+  box-shadow: var(--em-glow-sm);
 }
 
 .tool-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 16px;
 }
 
@@ -81,27 +136,41 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px; }
   background: var(--em-color-surface);
   border: 1px solid var(--em-color-border);
   border-radius: var(--em-radius);
-  padding: 18px;
+  padding: 20px;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 .tool-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+  transform: translateY(-3px);
+  box-shadow: var(--em-glow-lg);
   border-color: var(--em-color-primary);
 }
-.tool-card .icon { font-size: 1.6rem; }
-.tool-card h3 { font-size: 1rem; margin: 10px 0 4px; font-family: var(--em-font-heading); }
+.tool-card .icon { font-size: 1.7rem; }
+.tool-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 12px 0 4px;
+  font-family: var(--em-font-heading);
+  color: var(--em-color-text);
+}
 .tool-card p { font-size: 0.85rem; color: var(--em-color-text-muted); margin: 0; }
+
+.tool-card .tags { display: flex; flex-wrap: wrap; gap: 6px 10px; margin-top: 12px; }
 .tool-card .category-tag {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--em-color-accent);
   font-weight: 700;
 }
 
 .empty-state { text-align: center; color: var(--em-color-text-muted); padding: 60px 0; }
+
+footer.site-footer {
+  text-align: center;
+  padding: 28px;
+  color: var(--em-color-text-muted);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--em-color-border);
+}

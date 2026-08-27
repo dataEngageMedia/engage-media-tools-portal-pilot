@@ -37,7 +37,8 @@ function render() {
   const grid = document.getElementById('tool-grid');
   grid.innerHTML = '';
   const filtered = state.tools.filter(t => {
-    const matchesCategory = state.activeCategory === 'all' || t.category === state.activeCategory;
+    const cats = t.categories || [];
+    const matchesCategory = state.activeCategory === 'all' || cats.includes(state.activeCategory);
     const matchesQuery = !state.query || t.name.toLowerCase().includes(state.query) || (t.description || '').toLowerCase().includes(state.query);
     return matchesCategory && matchesQuery;
   });
@@ -53,12 +54,16 @@ function render() {
     a.href = t.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    const catLabel = (state.categories.find(c => c.id === t.category) || {}).label || t.category;
+    const cats = t.categories || [];
+    const tagsHtml = cats
+      .map(id => (state.categories.find(c => c.id === id) || {}).label || id)
+      .map(label => `<span class="category-tag">${label}</span>`)
+      .join('');
     a.innerHTML = `
       <div class="icon">${t.icon || '🔗'}</div>
       <h3>${t.name}</h3>
       <p>${t.description || ''}</p>
-      <span class="category-tag">${catLabel}</span>
+      <div class="tags">${tagsHtml}</div>
     `;
     grid.appendChild(a);
   });

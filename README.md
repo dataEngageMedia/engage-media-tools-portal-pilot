@@ -14,8 +14,10 @@ Open `data/tools.json` and add an entry to the `tools` array:
 
 Categories are defined once at the top of the same file — add a new one there if you need a new grouping.
 
-## Add brand assets (once you have them)
-Everything visual lives in `assets/theme.css`, in the `:root { ... }` block at the very top. Drop in Engage Media's real colors, font stack, and swap `assets/logo-placeholder.svg` for the real logo file (same filename, or update the one reference in `index.html`). Nothing else in the codebase needs to change.
+## Brand assets
+Applied from `Engage Media Brand Guidelines 2025.pdf`: Poppins typeface, Miami Vice Blue (#41B6E6) as the primary neon accent, Miami Heat Black background, Miami Vice Fuchsia (#DB3EB1) as a secondary accent, and the pin logo with its signature "halo" glow. All of it lives in `assets/theme.css`'s `:root { ... }` block — that's the only place to touch for any future brand tweak.
+
+`assets/logo.svg` is a hand-recreated approximation of the pin logo (pin shape + circle + tilted "E"), built from the guidelines PDF since no original vector/PNG export was provided. Swap it for the real exported logo file whenever you have one — same filename, nothing else needs to change.
 
 ## Add in-house tool documentation
 Add Markdown files under `docs/` and list them in `docs/_sidebar.md`. Docsify (loaded via CDN in `docs/index.html`) renders them client-side — no build step, no server, no separate deploy.

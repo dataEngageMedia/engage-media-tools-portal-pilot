@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="100" height="130" role="img" aria-label="Engage Media">
+  <path d="M50 2C27.4 2 9 20.4 9 43c0 32 41 83 41 83s41-51 41-83C91 20.4 72.6 2 50 2z" fill="#000000"/>
+  <circle cx="50" cy="42" r="23" fill="#ffffff"/>
+  <text x="50" y="52" font-family="Poppins, Arial, sans-serif" font-weight="800" font-size="30" fill="#000000" text-anchor="middle" transform="rotate(-12 50 42)">E</text>
+</svg>
