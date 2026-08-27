@@ -95,15 +95,6 @@
       "icon": "✅"
     },
     {
-      "name": "Example In-House Tool",
-      "url": "docs/#/example-tool",
-      "categories": [
-        "internal"
-      ],
-      "description": "Sample entry — shows how an in-house tool links to its own docs page below.",
-      "icon": "⚙️"
-    },
-    {
       "name": "AI Insight Editor",
       "url": "https://script.google.com/a/macros/engagemedia.com/s/AKfycbywJ86NIXqp6TzeM6DTA3wDlYPPmHKZ0T5kDjStkmuqQhGhgEIU7LrePMfyGSuzBUmVWQ/exec",
       "categories": [
