@@ -1,0 +1,107 @@
+/* ==========================================================================
+   ENGAGE MEDIA — BRAND TOKENS
+   Replace the values in this block ONLY when official brand assets arrive.
+   Nothing else in this file, index.html, or app.js should need to change.
+   ========================================================================== */
+:root {
+  --em-color-primary:    #1d4ed8;   /* TODO: Engage Media primary */
+  --em-color-primary-dk: #1e3a8a;   /* TODO: hover / darker shade */
+  --em-color-accent:     #f97316;   /* TODO: Engage Media accent */
+  --em-color-bg:         #f8fafc;
+  --em-color-surface:    #ffffff;
+  --em-color-text:       #0f172a;
+  --em-color-text-muted: #64748b;
+  --em-color-border:     #e2e8f0;
+  --em-font-heading: "Inter", "Segoe UI", system-ui, sans-serif; /* TODO: brand font */
+  --em-font-body:    "Inter", "Segoe UI", system-ui, sans-serif;
+  --em-radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--em-font-body);
+  background: var(--em-color-bg);
+  color: var(--em-color-text);
+}
+
+header.site-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px;
+  background: var(--em-color-surface);
+  border-bottom: 1px solid var(--em-color-border);
+}
+header.site-header img.logo { height: 36px; width: 36px; }
+header.site-header h1 { font-family: var(--em-font-heading); font-size: 1.25rem; margin: 0; }
+
+nav.top-nav { margin-left: auto; display: flex; gap: 20px; }
+nav.top-nav a { color: var(--em-color-text-muted); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+nav.top-nav a:hover { color: var(--em-color-primary); }
+
+main { max-width: 1100px; margin: 0 auto; padding: 32px; }
+
+.controls { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
+#search {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 14px;
+  border: 1px solid var(--em-color-border);
+  border-radius: var(--em-radius);
+  font-size: 0.95rem;
+}
+
+.category-filter { display: flex; gap: 8px; flex-wrap: wrap; }
+.category-filter button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--em-color-border);
+  background: var(--em-color-surface);
+  color: var(--em-color-text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.category-filter button.active {
+  background: var(--em-color-primary);
+  border-color: var(--em-color-primary);
+  color: #fff;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.tool-card {
+  display: block;
+  background: var(--em-color-surface);
+  border: 1px solid var(--em-color-border);
+  border-radius: var(--em-radius);
+  padding: 18px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.tool-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+  border-color: var(--em-color-primary);
+}
+.tool-card .icon { font-size: 1.6rem; }
+.tool-card h3 { font-size: 1rem; margin: 10px 0 4px; font-family: var(--em-font-heading); }
+.tool-card p { font-size: 0.85rem; color: var(--em-color-text-muted); margin: 0; }
+.tool-card .category-tag {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--em-color-accent);
+  font-weight: 700;
+}
+
+.empty-state { text-align: center; color: var(--em-color-text-muted); padding: 60px 0; }

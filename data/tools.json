@@ -1,0 +1,20 @@
+{
+  "categories": [
+    { "id": "analytics", "label": "Analytics & Reporting" },
+    { "id": "advertising", "label": "Advertising Platforms" },
+    { "id": "creative", "label": "Creative & Design" },
+    { "id": "project", "label": "Project & Comms" },
+    { "id": "internal", "label": "In-House Tools" }
+  ],
+  "tools": [
+    { "name": "Google Analytics", "url": "https://analytics.google.com", "category": "analytics", "description": "Web traffic and campaign performance reporting.", "icon": "📈" },
+    { "name": "Google Ads", "url": "https://ads.google.com", "category": "advertising", "description": "Manage paid search and display campaigns.", "icon": "🎯" },
+    { "name": "Meta Ads Manager", "url": "https://business.facebook.com/adsmanager", "category": "advertising", "description": "Manage Facebook & Instagram ad campaigns.", "icon": "📣" },
+    { "name": "Semrush", "url": "https://www.semrush.com", "category": "analytics", "description": "SEO, keyword research, and competitor analysis.", "icon": "🔍" },
+    { "name": "Canva", "url": "https://www.canva.com", "category": "creative", "description": "Quick creative assets and social graphics.", "icon": "🎨" },
+    { "name": "Google Drive", "url": "https://drive.google.com", "category": "project", "description": "Shared files, docs, and client folders.", "icon": "📁" },
+    { "name": "Slack", "url": "https://slack.com", "category": "project", "description": "Team communication.", "icon": "💬" },
+    { "name": "Asana", "url": "https://app.asana.com", "category": "project", "description": "Task and project tracking.", "icon": "✅" },
+    { "name": "Example In-House Tool", "url": "docs/#/example-tool", "category": "internal", "description": "Sample entry — shows how an in-house tool links to its own docs page below.", "icon": "⚙️" }
+  ]
+}
