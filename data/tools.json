@@ -65,16 +65,16 @@
         "creative"
       ],
       "description": "Quick creative assets and social graphics.",
-      "icon": "🎨"
+      "icon": "https://www.edigitalagency.com.au/wp-content/uploads/Canva-logo-PNG-medium-size.png"
     },
     {
       "name": "Google Drive",
-      "url": "https://drive.google.com",
+      "url": "https://drive.google.com/drive/folders/0AM0Zm_v4czSXUk9PVA",
       "categories": [
         "project"
       ],
       "description": "Shared files, docs, and client folders.",
-      "icon": "https://www.google.com/s2/favicons?domain=drive.google.com&sz=64"
+      "icon": "https://images.icon-icons.com/2642/PNG/512/google_drive_logo_icon_159334.png"
     },
     {
       "name": "Slack",
