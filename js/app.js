@@ -33,6 +33,14 @@ function makeCategoryButton(id, label) {
   return btn;
 }
 
+function iconHtml(icon) {
+  if (!icon) return '🔗';
+  if (/^https?:\/\//.test(icon)) {
+    return `<img src="${icon}" alt="" loading="lazy" />`;
+  }
+  return icon;
+}
+
 function render() {
   const grid = document.getElementById('tool-grid');
   grid.innerHTML = '';
@@ -60,7 +68,7 @@ function render() {
       .map(label => `<span class="category-tag">${label}</span>`)
       .join('');
     a.innerHTML = `
-      <div class="icon">${t.icon || '🔗'}</div>
+      <div class="icon">${iconHtml(t.icon)}</div>
       <h3>${t.name}</h3>
       <p>${t.description || ''}</p>
       <div class="tags">${tagsHtml}</div>

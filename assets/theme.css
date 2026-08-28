@@ -147,6 +147,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px; }
   border-color: var(--em-color-primary);
 }
 .tool-card .icon { font-size: 1.7rem; }
+.tool-card .icon img { width: 28px; height: 28px; object-fit: contain; border-radius: 6px; display: block; background: #fff; padding: 2px; }
 .tool-card h3 {
   font-size: 1rem;
   font-weight: 700;
