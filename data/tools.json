@@ -32,6 +32,24 @@
       "icon": "📈"
     },
     {
+      "name": "Data Studio",
+      "url": "https://datastudio.google.com/u/0/navigation/reporting",
+      "categories": [
+        "analytics"
+      ],
+      "description": "Create interactive dashboards and visual reports from marketing data.",
+      "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm0dPJbd-QUBfBdb-GkHQCtsAOHQ0jpkxqSjWd6Tjb7y337zwhE9nmlius&s=10"
+    },
+    {
+      "name": "Big Query",
+      "url": "https://console.cloud.google.com/bigquery?referrer=search&project=engagemediadata&pli=1&ws=!1m0&rapt=AEjHL4NrCngIvxQ-Y77gMaY59kmivQgo025eeHWqJ7lT3a6GWQO-J8hwTBWnfvbzAS494QlRJm_0DvyqW2q67nDM5-nrGCucPV4nMUiqRFv3SqubIfpheBs",
+      "categories": [
+        "analytics"
+      ],
+      "description": "Store, query, and analyze large-scale marketing and business data.",
+      "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbU3kmJEeEnS1LI_ZeUs_2ug96a-h0IPkkmyAfYOlh-Q&s=10"
+    },
+    {
       "name": "Google Ads",
       "url": "https://ads.google.com",
       "categories": [
