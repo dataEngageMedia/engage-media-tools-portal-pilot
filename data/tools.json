@@ -19,6 +19,10 @@
     {
       "id": "internal",
       "label": "In-House Tools"
+    },
+    {
+      "id": "support",
+      "label": "Support & Resources"
     }
   ],
   "tools": [
@@ -29,7 +33,16 @@
         "analytics"
       ],
       "description": "Web traffic and campaign performance reporting.",
-      "icon": "📈"
+      "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4_le2ASvaxy4HryO2p62ThIFOkbwlu_Zj9eAdQ3GYfVDfuphmQlJmOgpQ&s=10"
+    },
+    {
+      "name": "UTM Builder",
+      "url": "https://ga-dev-tools.google/ga4/campaign-url-builder/",
+      "categories": [
+        "analytics"
+      ],
+      "description": "Create and manage UTM parameters for accurate campaign tracking and attribution.",
+      "icon": "https://cdn.freebiesupply.com/logos/large/2x/google-analytics-logo-svg-vector.svg"
     },
     {
       "name": "Data Studio",
@@ -56,25 +69,61 @@
         "advertising"
       ],
       "description": "Manage paid search and display campaigns.",
-      "icon": "🎯"
+      "icon": "https://images.icon-icons.com/2699/PNG/512/google_ads_logo_icon_171064.png"
     },
     {
-      "name": "Meta Ads Manager",
-      "url": "https://business.facebook.com/adsmanager",
+      "name": "LinkedIn Ads",
+      "url": "https://www.linkedin.com/campaignmanager/accounts?businessId=personal",
       "categories": [
         "advertising"
       ],
-      "description": "Manage Facebook & Instagram ad campaigns.",
-      "icon": "📣"
+      "description": "Professional networking platform for B2B marketing, advertising, and audience engagement.",
+      "icon": "https://uptickmarketing.com/wp-content/uploads/LinkedIn-logo.jpeg"
     },
     {
-      "name": "Semrush",
-      "url": "https://www.semrush.com",
+      "name": "TikTok Ads",
+      "url": "https://business.tiktok.com/manage/account?org_id=6967024023343464449&select_track=1",
       "categories": [
-        "analytics"
+        "advertising"
       ],
-      "description": "SEO, keyword research, and competitor analysis.",
-      "icon": "🔍"
+      "description": "Manage and optimize advertising campaigns across TikTok.",
+      "icon": "https://imgproxy.divecdn.com/PWWjuihX-Ak62DmgA3weR_uXcHy0GY_1-jyPL3ZQsV8/g:ce/rs:fill:1200:675:1/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS90aWt0b2tfbG9nby5qcGc=.webp"
+    },
+    {
+      "name": "Meta Support",
+      "url": "https://www.facebook.com/business-support-home/?source=business_help_center_support",
+      "categories": [
+        "support"
+      ],
+      "description": "Support resources and troubleshooting for Meta advertising and business tools.",
+      "icon": "https://lookaside.fbsbx.com/elementpath/media/?media_id=597423292333741&version=1782938342"
+    },
+    {
+      "name": "Ahrefs",
+      "url": "https://ahrefs.com",
+      "categories": [
+        "Advertising Platforms"
+      ],
+      "description": "SEO research, keyword tracking, competitor analysis, and backlink insights.",
+      "icon": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ahrefs-icon.png"
+    },
+    {
+      "name": "AudioGo",
+      "url": "https://app.audiogo.com/us/campaigns",
+      "categories": [
+        "Advertising Platforms"
+      ],
+      "description": "Audio advertising platform for creating, managing, and measuring digital audio campaigns.",
+      "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW74ymBfNHyI3K_sbEVgm7l-4eu8f6Ibf7BzsdlK3px_5VQ0wJVW1HQ8o&s=10"
+    },
+    {
+      "name": "Ground Truth",
+      "url": "https://ads.groundtruth.com/organization/1079948",
+      "categories": [
+        "Advertising Platforms"
+      ],
+      "description": "Location-based advertising platform for audience targeting, in-store visits, and real-world performance measurement.",
+      "icon": "https://a.mktgcdn.com/p/jThG4utOKeeyPp2dBFgwWJIBH6EXjP6YTxbxayaamgw/1024x1024.png"
     },
     {
       "name": "Canva",
@@ -95,22 +144,22 @@
       "icon": "https://images.icon-icons.com/2642/PNG/512/google_drive_logo_icon_159334.png"
     },
     {
-      "name": "Slack",
-      "url": "https://slack.com",
+      "name": "Google Meet",
+      "url": "https://meet.google.com/home",
       "categories": [
         "project"
       ],
       "description": "Team communication.",
-      "icon": "💬"
+      "icon": "https://cdn.iconscout.com/icon/free/png-256/free-google-meet-logo-icon-svg-download-png-8630401.png?f=webp"
     },
     {
-      "name": "Asana",
-      "url": "https://app.asana.com",
+      "name": "Monday",
+      "url": "https://engage-media-team.monday.com/workspaces/13224562",
       "categories": [
         "project"
       ],
       "description": "Task and project tracking.",
-      "icon": "✅"
+      "icon": "https://play-lh.googleusercontent.com/dGVQ2DTcpBemRcNkFR_ZdWHNEeJItaohuR_MVAou5Ah5W7g_x4vMBoSbGoRPkDLveQNO-PBZ8u323d1q9dLTzw"
     },
     {
       "name": "AI Insight Editor",
