@@ -90,6 +90,15 @@
       "icon": "https://imgproxy.divecdn.com/PWWjuihX-Ak62DmgA3weR_uXcHy0GY_1-jyPL3ZQsV8/g:ce/rs:fill:1200:675:1/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS90aWt0b2tfbG9nby5qcGc=.webp"
     },
     {
+      "name": "Reddit Ads",
+      "url": "https://ads.reddit.com/business/cf1133ac-beb6-4cb1-98e9-743b800a067f/ad-accounts",
+      "categories": [
+        "advertising"
+      ],
+      "description": "Manage targeted advertising campaigns and reach audiences across Reddit.",
+      "icon": "https://www.logo.wine/a/logo/Reddit/Reddit-Logomark-Color-Logo.wine.svg"
+    },
+    {
       "name": "Meta Support",
       "url": "https://www.facebook.com/business-support-home/?source=business_help_center_support",
       "categories": [
