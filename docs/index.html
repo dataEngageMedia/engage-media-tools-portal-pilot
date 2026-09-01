@@ -102,5 +102,22 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script>
+    // Docsify closes the sidebar on mobile by listening for ANY click on
+    // document.body, with no check of what was clicked (verified against
+    // docsify v4.13.1 source: src/core/event/sidebar.js). Stopping the click
+    // from bubbling past .sidebar itself -- in the normal bubble phase, not
+    // the capture phase -- lets the link/search box/button handle the click
+    // completely first, and only then keeps it from reaching body. Clicks
+    // outside the sidebar are untouched and still close it as expected.
+    document.addEventListener('DOMContentLoaded', function () {
+      var sidebar = document.querySelector('.sidebar');
+      if (sidebar) {
+        sidebar.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
