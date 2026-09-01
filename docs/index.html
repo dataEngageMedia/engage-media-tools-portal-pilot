@@ -60,6 +60,13 @@
     .sidebar ul li a:hover { color: #FFFFFF !important; }
     .sidebar ul li.active > a { color: #41B6E6 !important; }
     .sidebar li > p { color: #F4F7FB !important; }
+
+    /* Docsify's vue theme puts a translucent white background on the mobile
+       sidebar-toggle button (both the default and the "closed" state) — removing it. */
+    .sidebar-toggle,
+    body.close .sidebar-toggle {
+      background-color: transparent !important;
+    }
   </style>
 </head>
 <body>
