@@ -102,18 +102,5 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script>
-    // Docsify closes the sidebar on mobile/narrow widths for almost any click —
-    // including clicks on the search box and sidebar links, not just clicks
-    // outside it. Intercepting in the capture phase (which always runs before
-    // Docsify's own bubble-phase close handler) so clicks INSIDE the sidebar,
-    // the toggle button, or the search box never reach that handler. Clicks
-    // anywhere else on the page still bubble normally and close it as expected.
-    document.addEventListener('click', function (e) {
-      if (e.target.closest('.sidebar') || e.target.closest('.sidebar-toggle') || e.target.closest('.search')) {
-        e.stopPropagation();
-      }
-    }, true);
-  </script>
 </body>
 </html>
