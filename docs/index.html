@@ -95,7 +95,7 @@
 
     .em-sidebar-search {
       display: block;
-      margin: 0 20px 16px;
+      margin: 4px 20px 20px;
       padding: 10px 14px;
       width: calc(100% - 68px);
       background: #131A33;
@@ -108,23 +108,48 @@
     .em-sidebar-search::placeholder { color: #8B93B8; }
     .em-sidebar-search:focus { outline: none; border-color: #41B6E6; }
 
+    .em-sidebar-label {
+      margin: 0 20px 8px;
+      padding: 0 12px;
+      color: #6B7494;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
     .em-sidebar-nav {
       list-style: none;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
     .em-sidebar-nav li { margin: 2px 12px; }
     .em-sidebar-nav a {
       display: block;
+      width: 100%;
+      box-sizing: border-box;
       padding: 10px 12px;
       border-radius: 8px;
+      border-left: 3px solid transparent;
       color: #C7CEEB;
       text-decoration: none;
+      text-align: left;
       font-weight: 500;
       font-size: 0.95rem;
+      line-height: 1.3;
     }
-    .em-sidebar-nav a:hover { color: #FFFFFF; background: rgba(65, 182, 230, 0.08); }
-    .em-sidebar-nav a.em-active { color: #41B6E6; background: rgba(65, 182, 230, 0.12); }
+    .em-sidebar-nav a:hover {
+      color: #FFFFFF;
+      background: rgba(65, 182, 230, 0.08);
+    }
+    .em-sidebar-nav a.em-active {
+      color: #41B6E6;
+      background: rgba(65, 182, 230, 0.12);
+      border-left-color: #41B6E6;
+      font-weight: 600;
+    }
 
     .em-sidebar-empty {
       margin: 4px 20px;
@@ -208,6 +233,7 @@
 
   <nav class="em-sidebar">
     <input class="em-sidebar-search" type="text" placeholder="Type to search" />
+    <p class="em-sidebar-label">Navigation</p>
     <ul class="em-sidebar-nav">
       <li><a href="#/">Home</a></li>
       <li><a href="#/ai-insight-editor">AI Insight Editor</a></li>
