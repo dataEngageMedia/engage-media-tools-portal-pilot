@@ -26,7 +26,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       height: 68px;
-      z-index: 20;
+      z-index: 40;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -68,7 +68,7 @@
       background-color: transparent !important;
     }
 
-    /* Same root cause as the sidebar: vue.css hardcodes body/heading text colors
+    /* Same root cause as the sidebar: vue theme hardcodes body/heading text colors
        (#34495e, #2c3e50) meant for a white page, so they were nearly invisible
        against our dark background. Overriding with light, readable colors. */
     body { color: #D7DEF5 !important; }
@@ -82,6 +82,53 @@
     .markdown-section h6,
     .markdown-section blockquote,
     .markdown-section em { color: #9AA4CC !important; }
+
+    /* ---------------------------------------------------------------------
+       Sidebar open/close: rebuilt from scratch, independent of Docsify.
+
+       Docsify's own mobile sidebar toggle works by adding/removing a "close"
+       class on <body> from a single click listener attached to the whole
+       body, with no check of what was actually clicked -- confirmed by
+       reading Docsify v4.13.1's real source (src/core/event/sidebar.js).
+       That's what kept closing the sidebar the instant you clicked a link,
+       the search box, or anything else inside it, no matter how we tried to
+       intercept it.
+
+       Instead of continuing to fight Docsify's internal listener, this
+       ignores it completely: our own "em-sidebar-open" class controls
+       visibility, our own toggle button listener sets it, and our own
+       document click listener is the only thing that ever closes it -- and
+       it only fires for clicks that are demonstrably outside the sidebar
+       and its toggle button. Docsify's own "close" class still gets
+       toggled internally in the background, but nothing on the page reads
+       it anymore, so it can't affect what's on screen.
+    --------------------------------------------------------------------- */
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%) !important;
+        transition: transform 250ms ease-out !important;
+      }
+      body.em-sidebar-open .sidebar {
+        transform: translateX(0) !important;
+      }
+      .content {
+        transform: none !important;
+        transition: none !important;
+      }
+      .em-sidebar-backdrop {
+        display: none;
+        position: fixed;
+        top: 68px; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 15;
+      }
+      body.em-sidebar-open .em-sidebar-backdrop {
+        display: block;
+      }
+    }
+    @media screen and (min-width: 769px) {
+      .em-sidebar-backdrop { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -91,6 +138,7 @@
       <img src="../assets/logo.svg" alt="" />
     </a>
   </div>
+  <div class="em-sidebar-backdrop"></div>
   <div id="app"></div>
   <script>
     window.$docsify = {
@@ -103,21 +151,56 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script>
-    // Docsify closes the sidebar on mobile by listening for ANY click on
-    // document.body, with no check of what was clicked (verified against
-    // docsify v4.13.1 source: src/core/event/sidebar.js). Stopping the click
-    // from bubbling past .sidebar itself -- in the normal bubble phase, not
-    // the capture phase -- lets the link/search box/button handle the click
-    // completely first, and only then keeps it from reaching body. Clicks
-    // outside the sidebar are untouched and still close it as expected.
-    document.addEventListener('DOMContentLoaded', function () {
-      var sidebar = document.querySelector('.sidebar');
-      if (sidebar) {
-        sidebar.addEventListener('click', function (e) {
-          e.stopPropagation();
-        });
+    (function () {
+      function ready(fn) {
+        if (document.readyState !== 'loading') fn();
+        else document.addEventListener('DOMContentLoaded', fn);
       }
-    });
+
+      ready(function () {
+        var backdrop = document.querySelector('.em-sidebar-backdrop');
+
+        function isOpen() {
+          return document.body.classList.contains('em-sidebar-open');
+        }
+        function openSidebar() {
+          document.body.classList.add('em-sidebar-open');
+        }
+        function closeSidebar() {
+          document.body.classList.remove('em-sidebar-open');
+        }
+
+        // The toggle button is rendered by Docsify itself. We attach our own,
+        // separate listener to it -- Docsify's own listener still runs too,
+        // toggling its own "close" class, but nothing reads that class
+        // anymore, so it has no visible effect.
+        document.addEventListener('click', function (e) {
+          if (e.target.closest('.sidebar-toggle')) {
+            e.stopPropagation();
+            isOpen() ? closeSidebar() : openSidebar();
+          }
+        });
+
+        // Tapping the dimmed backdrop behind the open sidebar closes it.
+        if (backdrop) {
+          backdrop.addEventListener('click', closeSidebar);
+        }
+
+        // Any other click outside the sidebar (and outside its toggle
+        // button) closes it. Clicks inside the sidebar -- links, the search
+        // box, anything -- are never touched by this listener, so they
+        // behave exactly like normal clicks with no interference.
+        document.addEventListener('click', function (e) {
+          if (!isOpen()) {
+            return;
+          }
+          if (e.target.closest('.sidebar') || e.target.closest('.sidebar-toggle')) {
+            return;
+          }
+          closeSidebar();
+        });
+      });
+    })();
   </script>
 </body>
 </html>
