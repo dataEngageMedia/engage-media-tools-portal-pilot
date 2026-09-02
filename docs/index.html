@@ -159,6 +159,7 @@
 
       ready(function () {
         var backdrop = document.querySelector('.em-sidebar-backdrop');
+        var toggleBtn = document.querySelector('.sidebar-toggle');
 
         function isOpen() {
           return document.body.classList.contains('em-sidebar-open');
@@ -170,16 +171,17 @@
           document.body.classList.remove('em-sidebar-open');
         }
 
-        // The toggle button is rendered by Docsify itself. We attach our own,
-        // separate listener to it -- Docsify's own listener still runs too,
-        // toggling its own "close" class, but nothing reads that class
-        // anymore, so it has no visible effect.
-        document.addEventListener('click', function (e) {
-          if (e.target.closest('.sidebar-toggle')) {
-            e.stopPropagation();
+        // The toggle button is rendered by Docsify itself, and Docsify's own
+        // click handler on it calls stopPropagation() -- so a listener
+        // registered on document (delegation) never sees this click at all.
+        // Attaching directly to the button itself runs alongside Docsify's
+        // own handler regardless (stopPropagation only blocks propagation to
+        // OTHER elements, never other listeners on the same element).
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', function () {
             isOpen() ? closeSidebar() : openSidebar();
-          }
-        });
+          });
+        }
 
         // Tapping the dimmed backdrop behind the open sidebar closes it.
         if (backdrop) {
