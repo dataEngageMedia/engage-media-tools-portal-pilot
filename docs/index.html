@@ -125,7 +125,12 @@
       flex-direction: column;
       align-items: stretch;
     }
-    .em-sidebar-nav li { margin: 2px 12px; }
+    .em-sidebar-nav li {
+      margin: 2px 12px;
+      width: auto;
+      flex-shrink: 0;
+      align-self: stretch;
+    }
     .em-sidebar-nav a {
       display: block;
       width: 100%;
@@ -233,7 +238,7 @@
 
   <nav class="em-sidebar">
     <input class="em-sidebar-search" type="text" placeholder="Type to search" />
-    <p class="em-sidebar-label">Navigation</p>
+    <p class="em-sidebar-label">Home</p>
     <ul class="em-sidebar-nav">
       <li><a href="#/">Home</a></li>
       <li><a href="#/ai-insight-editor">AI Insight Editor</a></li>
