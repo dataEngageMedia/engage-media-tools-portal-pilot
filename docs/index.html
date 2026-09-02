@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Engage Media | Docs</title>
@@ -18,11 +19,16 @@
       --link-color: #41B6E6;
       --cover-background-color: #05070F;
     }
-    body { background: var(--base-background-color); }
+
+    body {
+      background: var(--base-background-color);
+    }
 
     .docs-topbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 68px;
       z-index: 40;
       display: flex;
@@ -31,41 +37,54 @@
       gap: 20px;
       padding: 0 28px;
       background: #0A0F24;
-      border-bottom: 1px solid rgba(65,182,230,0.22);
+      border-bottom: 1px solid rgba(65, 182, 230, 0.22);
       font-family: 'Poppins', -apple-system, sans-serif;
     }
+
     .docs-topbar-brand {
       display: flex;
       align-items: center;
       margin-right: 4px;
     }
+
     .docs-topbar img {
-      height: 36px; width: 36px;
-      filter: drop-shadow(0 0 4px rgba(65,182,230,0.9)) drop-shadow(0 0 10px rgba(65,182,230,0.4));
+      height: 36px;
+      width: 36px;
+      filter: drop-shadow(0 0 4px rgba(65, 182, 230, 0.9)) drop-shadow(0 0 10px rgba(65, 182, 230, 0.4));
     }
+
     .docs-topbar a {
-      display: flex; align-items: center; gap: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
       color: #F4F7FB;
       font-weight: 700;
       font-size: 1.05rem;
       letter-spacing: 0.02em;
     }
-    .docs-topbar a:hover { color: #41B6E6; }
+
+    .docs-topbar a:hover {
+      color: #41B6E6;
+    }
 
     /* Hide default Docsify sidebar controls */
-    .sidebar, .sidebar-toggle { display: none !important; }
+    .sidebar,
+    .sidebar-toggle {
+      display: none !important;
+    }
 
     .content {
       top: 68px !important;
       left: 0 !important;
       transition: margin-left 250ms ease-out !important;
     }
-    
+
     /* Shift main content dynamically based on sidebar state */
     body.em-sidebar-open .content {
       margin-left: 300px !important;
     }
+
     @media screen and (max-width: 768px) {
       body.em-sidebar-open .content {
         margin-left: 0 !important;
@@ -75,11 +94,14 @@
     /* Custom Sidebar Styles */
     .em-sidebar {
       position: fixed;
-      top: 68px; bottom: 0; left: 0;
+      top: 68px;
+      bottom: 0;
+      left: 0;
       width: 300px;
       background: #0D1224;
       border-right: 1px solid rgba(65, 182, 230, 0.25);
-      overflow: visible; /* Allows toggle button tab to sit outside border */
+      overflow: visible;
+      /* Allows toggle button tab to sit outside border */
       padding: 20px 0 40px;
       font-family: 'Poppins', -apple-system, sans-serif;
       transform: translateX(-100%);
@@ -88,7 +110,7 @@
       text-align: left;
       box-sizing: border-box;
     }
-    
+
     /* Open state class controls visibility across desktop and mobile */
     body.em-sidebar-open .em-sidebar {
       transform: translateX(0) !important;
@@ -107,8 +129,15 @@
       font-size: 0.9rem;
       box-sizing: border-box;
     }
-    .em-sidebar-search::placeholder { color: #8B93B8; }
-    .em-sidebar-search:focus { outline: none; border-color: #41B6E6; }
+
+    .em-sidebar-search::placeholder {
+      color: #8B93B8;
+    }
+
+    .em-sidebar-search:focus {
+      outline: none;
+      border-color: #41B6E6;
+    }
 
     /* Section label formatted as a clickable Home link */
     .em-sidebar-label {
@@ -124,6 +153,7 @@
       text-decoration: none;
       transition: color 150ms ease;
     }
+
     .em-sidebar-label:hover {
       color: #41B6E6;
     }
@@ -136,10 +166,12 @@
       flex-direction: column;
       align-items: stretch;
     }
+
     .em-sidebar-nav li {
       margin: 2px 12px;
       width: auto;
     }
+
     .em-sidebar-nav a {
       display: block;
       width: 100%;
@@ -154,10 +186,12 @@
       font-size: 0.95rem;
       line-height: 1.3;
     }
+
     .em-sidebar-nav a:hover {
       color: #FFFFFF;
       background: rgba(65, 182, 230, 0.08);
     }
+
     .em-sidebar-nav a.em-active {
       color: #41B6E6;
       background: rgba(65, 182, 230, 0.12);
@@ -184,7 +218,8 @@
       width: 36px;
       height: 44px;
       border: 1px solid rgba(65, 182, 230, 0.4);
-      border-left: none; /* Flushes seamlessly with sidebar edge */
+      border-left: none;
+      /* Flushes seamlessly with sidebar edge */
       border-radius: 0 8px 8px 0;
       background: #0D1224;
       color: #41B6E6;
@@ -193,9 +228,9 @@
       align-items: center;
       justify-content: center;
       transition: all 200ms ease;
-      box-shadow: 4px 0 12px rgba(65, 182, 230, 0.25), 2px 0 8px rgba(0,0,0,0.5);
+      box-shadow: 4px 0 12px rgba(65, 182, 230, 0.25), 2px 0 8px rgba(0, 0, 0, 0.5);
     }
-    
+
     /* When sidebar is open, adjust position to sit directly on border */
     body.em-sidebar-open .em-sidebar-toggle {
       right: -37px;
@@ -227,28 +262,65 @@
     .em-sidebar-backdrop {
       display: none;
       position: fixed;
-      top: 68px; left: 0; right: 0; bottom: 0;
+      top: 68px;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(0, 0, 0, 0.5);
       z-index: 24;
     }
+
     @media screen and (max-width: 768px) {
-      body.em-sidebar-open .em-sidebar-backdrop { display: block; }
+      body.em-sidebar-open .em-sidebar-backdrop {
+        display: block;
+      }
     }
 
     /* Dark Mode Text Rules */
-    body { color: #D7DEF5 !important; }
+    body {
+      color: #D7DEF5 !important;
+    }
+
     .markdown-section h1,
     .markdown-section h2,
     .markdown-section h3,
     .markdown-section h4,
-    .markdown-section strong { color: #F7F9FF !important; }
+    .markdown-section strong {
+      color: #F7F9FF !important;
+    }
+
     .markdown-section p,
-    .markdown-section li { color: #D7DEF5 !important; }
+    .markdown-section li {
+      color: #D7DEF5 !important;
+    }
+
     .markdown-section h6,
     .markdown-section blockquote,
-    .markdown-section em { color: #9AA4CC !important; }
+    .markdown-section em {
+      color: #9AA4CC !important;
+    }
+
+    .markdown-section table tr {
+      background: transparent !important;
+    }
+
+    .markdown-section table tr:nth-child(2n) {
+      background-color: rgba(65, 182, 230, 0.06) !important;
+    }
+
+    .markdown-section table th,
+    .markdown-section table td {
+      border: 1px solid rgba(65, 182, 230, 0.2) !important;
+      color: #D7DEF5 !important;
+    }
+
+    .markdown-section table th {
+      background: rgba(65, 182, 230, 0.12) !important;
+      color: #F7F9FF !important;
+    }
   </style>
 </head>
+
 <body class="em-sidebar-open">
   <!-- Top bar aligned to far left: Logo -> Tools Portal -->
   <div class="docs-topbar">
@@ -266,7 +338,9 @@
   <nav class="em-sidebar">
     <!-- Visible Tab Toggle Button inside Sidebar -->
     <button class="em-sidebar-toggle" type="button" aria-label="Toggle navigation">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <svg viewBox="0 0 24 24">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
     </button>
 
     <input class="em-sidebar-search" type="text" placeholder="Type to search" />
@@ -371,4 +445,5 @@
     })();
   </script>
 </body>
+
 </html>
