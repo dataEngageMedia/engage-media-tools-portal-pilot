@@ -12,9 +12,6 @@
       --theme-color: #41B6E6;
       --base-background-color: #05070F;
       --base-color: #F4F7FB;
-      --sidebar-background: #0D1224;
-      --sidebar-nav-link-color: #8B93B8;
-      --sidebar-nav-link-color--active: #41B6E6;
       --heading-color: #F4F7FB;
       --font-family-base: 'Poppins', -apple-system, sans-serif;
       --font-family-code: 'Poppins', monospace;
@@ -22,6 +19,7 @@
       --cover-background-color: #05070F;
     }
     body { background: var(--base-background-color); }
+
     .docs-topbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -49,28 +47,138 @@
       letter-spacing: 0.02em;
     }
     .docs-topbar a:hover { color: #41B6E6; }
-    .sidebar, .content, .sidebar-toggle { top: 68px !important; }
 
-    /* Docsify's vue theme hardcodes sidebar colors (#fff bg, #505d6b text) instead of
-       reading our --sidebar-* custom properties, which is why the text was unreadable
-       against our dark theme. Overriding the real selectors directly, not the unused vars. */
-    .sidebar { background-color: #0D1224 !important; }
-    .sidebar > h1 a { color: #F4F7FB !important; }
-    .sidebar ul li a { color: #C7CEEB !important; font-weight: 500; }
-    .sidebar ul li a:hover { color: #FFFFFF !important; }
-    .sidebar ul li.active > a { color: #41B6E6 !important; }
-    .sidebar li > p { color: #F4F7FB !important; }
+    /* ---------------------------------------------------------------------
+       Docsify's own sidebar and toggle button are hidden completely, not
+       just restyled. This is a from-scratch rebuild: after three rounds of
+       trying to override or intercept Docsify's built-in sidebar-close
+       behavior and hitting a different internal quirk each time, the only
+       way to be fully certain no Docsify-internal script can ever close our
+       navigation is to make sure a real click can never land on anything
+       Docsify itself controls. Docsify still renders its own sidebar/toggle
+       in the background (harmless -- it's invisible and unreachable), while
+       everything the user actually sees and clicks below (.em-sidebar,
+       .em-sidebar-toggle, .em-sidebar-backdrop) is plain markup and script
+       written here, with no shared class names and no code path that lets
+       Docsify attach anything to it.
+    --------------------------------------------------------------------- */
+    .sidebar, .sidebar-toggle { display: none !important; }
 
-    /* Docsify's vue theme puts a translucent white background on the mobile
-       sidebar-toggle button (both the default and the "closed" state) — removing it. */
-    .sidebar-toggle,
-    body.close .sidebar-toggle {
-      background-color: transparent !important;
+    .content {
+      top: 68px !important;
+      left: 0 !important;
+      transition: none !important;
+    }
+    @media screen and (min-width: 769px) {
+      .content { left: 300px !important; }
     }
 
-    /* Same root cause as the sidebar: vue theme hardcodes body/heading text colors
-       (#34495e, #2c3e50) meant for a white page, so they were nearly invisible
-       against our dark background. Overriding with light, readable colors. */
+    .em-sidebar {
+      position: fixed;
+      top: 68px; bottom: 0; left: 0;
+      width: 300px;
+      background: #0D1224;
+      border-right: 1px solid rgba(65, 182, 230, 0.15);
+      overflow-y: auto;
+      padding: 20px 0 40px;
+      font-family: 'Poppins', -apple-system, sans-serif;
+      transform: translateX(-100%);
+      transition: transform 250ms ease-out;
+      z-index: 25;
+    }
+    @media screen and (min-width: 769px) {
+      .em-sidebar { transform: translateX(0) !important; }
+    }
+    body.em-sidebar-open .em-sidebar {
+      transform: translateX(0);
+    }
+
+    .em-sidebar-search {
+      display: block;
+      margin: 0 20px 16px;
+      padding: 10px 14px;
+      width: calc(100% - 68px);
+      background: #131A33;
+      border: 1px solid rgba(65, 182, 230, 0.25);
+      border-radius: 8px;
+      color: #F4F7FB;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .em-sidebar-search::placeholder { color: #8B93B8; }
+    .em-sidebar-search:focus { outline: none; border-color: #41B6E6; }
+
+    .em-sidebar-nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .em-sidebar-nav li { margin: 2px 12px; }
+    .em-sidebar-nav a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: #C7CEEB;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .em-sidebar-nav a:hover { color: #FFFFFF; background: rgba(65, 182, 230, 0.08); }
+    .em-sidebar-nav a.em-active { color: #41B6E6; background: rgba(65, 182, 230, 0.12); }
+
+    .em-sidebar-empty {
+      margin: 4px 20px;
+      color: #6B7494;
+      font-size: 0.85rem;
+      font-family: 'Poppins', -apple-system, sans-serif;
+    }
+
+    .em-sidebar-toggle {
+      position: fixed;
+      top: 14px; left: 16px;
+      z-index: 41;
+      width: 40px; height: 40px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(65, 182, 230, 0.14);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .em-sidebar-toggle:hover { background: rgba(65, 182, 230, 0.24); }
+    .em-sidebar-toggle-bar,
+    .em-sidebar-toggle-bar::before,
+    .em-sidebar-toggle-bar::after {
+      content: '';
+      display: block;
+      width: 18px; height: 2px;
+      background: #F4F7FB;
+      border-radius: 1px;
+    }
+    .em-sidebar-toggle-bar { position: relative; }
+    .em-sidebar-toggle-bar::before { position: absolute; top: -6px; }
+    .em-sidebar-toggle-bar::after { position: absolute; top: 6px; }
+
+    .em-sidebar-backdrop {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 24;
+    }
+    body.em-sidebar-open .em-sidebar-backdrop { display: block; }
+
+    @media screen and (max-width: 768px) {
+      .em-sidebar-toggle { display: flex; }
+      .docs-topbar { padding-left: 64px; }
+    }
+    @media screen and (min-width: 769px) {
+      .em-sidebar-backdrop { display: none !important; }
+    }
+
+    /* Readable text against our dark background -- Docsify's vue theme
+       hardcodes colors meant for a white page. */
     body { color: #D7DEF5 !important; }
     .markdown-section h1,
     .markdown-section h2,
@@ -82,53 +190,6 @@
     .markdown-section h6,
     .markdown-section blockquote,
     .markdown-section em { color: #9AA4CC !important; }
-
-    /* ---------------------------------------------------------------------
-       Sidebar open/close: rebuilt from scratch, independent of Docsify.
-
-       Docsify's own mobile sidebar toggle works by adding/removing a "close"
-       class on <body> from a single click listener attached to the whole
-       body, with no check of what was actually clicked -- confirmed by
-       reading Docsify v4.13.1's real source (src/core/event/sidebar.js).
-       That's what kept closing the sidebar the instant you clicked a link,
-       the search box, or anything else inside it, no matter how we tried to
-       intercept it.
-
-       Instead of continuing to fight Docsify's internal listener, this
-       ignores it completely: our own "em-sidebar-open" class controls
-       visibility, our own toggle button listener sets it, and our own
-       document click listener is the only thing that ever closes it -- and
-       it only fires for clicks that are demonstrably outside the sidebar
-       and its toggle button. Docsify's own "close" class still gets
-       toggled internally in the background, but nothing on the page reads
-       it anymore, so it can't affect what's on screen.
-    --------------------------------------------------------------------- */
-    @media screen and (max-width: 768px) {
-      .sidebar {
-        transform: translateX(-100%) !important;
-        transition: transform 250ms ease-out !important;
-      }
-      body.em-sidebar-open .sidebar {
-        transform: translateX(0) !important;
-      }
-      .content {
-        transform: none !important;
-        transition: none !important;
-      }
-      .em-sidebar-backdrop {
-        display: none;
-        position: fixed;
-        top: 68px; left: 0; right: 0; bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 15;
-      }
-      body.em-sidebar-open .em-sidebar-backdrop {
-        display: block;
-      }
-    }
-    @media screen and (min-width: 769px) {
-      .em-sidebar-backdrop { display: none !important; }
-    }
   </style>
 </head>
 <body>
@@ -138,18 +199,32 @@
       <img src="../assets/logo.svg" alt="" />
     </a>
   </div>
+
+  <button class="em-sidebar-toggle" type="button" aria-label="Toggle navigation">
+    <span class="em-sidebar-toggle-bar"></span>
+  </button>
+
   <div class="em-sidebar-backdrop"></div>
+
+  <nav class="em-sidebar">
+    <input class="em-sidebar-search" type="text" placeholder="Type to search" />
+    <ul class="em-sidebar-nav">
+      <li><a href="#/">Home</a></li>
+      <li><a href="#/ai-insight-editor">AI Insight Editor</a></li>
+    </ul>
+    <p class="em-sidebar-empty" hidden>No matches.</p>
+  </nav>
+
   <div id="app"></div>
+
   <script>
     window.$docsify = {
       name: 'Engage Media Docs',
-      loadSidebar: true,
-      subMaxLevel: 2,
-      search: 'auto'
+      loadSidebar: false,
+      subMaxLevel: 2
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script>
     (function () {
       function ready(fn) {
@@ -158,8 +233,12 @@
       }
 
       ready(function () {
+        var toggleBtn = document.querySelector('.em-sidebar-toggle');
         var backdrop = document.querySelector('.em-sidebar-backdrop');
-        var toggleBtn = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('.em-sidebar');
+        var searchInput = document.querySelector('.em-sidebar-search');
+        var navItems = Array.prototype.slice.call(sidebar.querySelectorAll('.em-sidebar-nav li'));
+        var emptyMsg = document.querySelector('.em-sidebar-empty');
 
         function isOpen() {
           return document.body.classList.contains('em-sidebar-open');
@@ -171,36 +250,69 @@
           document.body.classList.remove('em-sidebar-open');
         }
 
-        // The toggle button is rendered by Docsify itself, and Docsify's own
-        // click handler on it calls stopPropagation() -- so a listener
-        // registered on document (delegation) never sees this click at all.
-        // Attaching directly to the button itself runs alongside Docsify's
-        // own handler regardless (stopPropagation only blocks propagation to
-        // OTHER elements, never other listeners on the same element).
+        // Our toggle button, our backdrop, our sidebar -- none of this is
+        // Docsify's own UI, so there is no other script anywhere that can
+        // react to clicks on it besides the listeners below.
         if (toggleBtn) {
           toggleBtn.addEventListener('click', function () {
             isOpen() ? closeSidebar() : openSidebar();
           });
         }
-
-        // Tapping the dimmed backdrop behind the open sidebar closes it.
         if (backdrop) {
           backdrop.addEventListener('click', closeSidebar);
         }
 
-        // Any other click outside the sidebar (and outside its toggle
-        // button) closes it. Clicks inside the sidebar -- links, the search
-        // box, anything -- are never touched by this listener, so they
-        // behave exactly like normal clicks with no interference.
+        // Close on a click anywhere outside our sidebar and its toggle
+        // button. Clicks on nav links or the search box are never touched.
         document.addEventListener('click', function (e) {
           if (!isOpen()) {
             return;
           }
-          if (e.target.closest('.sidebar') || e.target.closest('.sidebar-toggle')) {
+          if (e.target.closest('.em-sidebar') || e.target.closest('.em-sidebar-toggle')) {
             return;
           }
           closeSidebar();
         });
+
+        // Simple client-side filter: as you type, hide nav items whose text
+        // doesn't match. With only a couple of pages today this is plenty --
+        // it grows automatically as pages are added to the list above,
+        // with no separate search index to keep in sync.
+        if (searchInput) {
+          searchInput.addEventListener('input', function () {
+            var query = searchInput.value.trim().toLowerCase();
+            var anyVisible = false;
+
+            navItems.forEach(function (li) {
+              var text = li.textContent.trim().toLowerCase();
+              var matches = query === '' || text.indexOf(query) !== -1;
+              li.hidden = !matches;
+              if (matches) {
+                anyVisible = true;
+              }
+            });
+
+            emptyMsg.hidden = anyVisible;
+          });
+        }
+
+        // Highlight whichever nav link matches the current page, both on
+        // load and whenever Docsify's router changes the hash.
+        function markActiveLink() {
+          var currentHash = location.hash || '#/';
+
+          navItems.forEach(function (li) {
+            var link = li.querySelector('a');
+            if (!link) {
+              return;
+            }
+            var isActive = link.getAttribute('href') === currentHash;
+            link.classList.toggle('em-active', isActive);
+          });
+        }
+
+        window.addEventListener('hashchange', markActiveLink);
+        markActiveLink();
       });
     })();
   </script>
