@@ -23,6 +23,10 @@
     {
       "id": "support",
       "label": "Support & Resources"
+    },
+    {
+      "id": "guide",
+      "label": "Guides & Sheets"
     }
   ],
   "tools": [
@@ -106,6 +110,51 @@
       ],
       "description": "Support resources and troubleshooting for Meta advertising and business tools.",
       "icon": "https://lookaside.fbsbx.com/elementpath/media/?media_id=597423292333741&version=1782938342"
+    },
+    {
+      "name": "Client Onboarding Guide",
+      "url": "https://docs.google.com/document/d/1k3eOqIOrHVSms4cHCLLbSDnE2H5r5vKZd84VajQgVfo/edit?tab=t.0#heading=h.karhas6826uz",
+      "categories": [
+        "guide"
+      ],
+      "description": "Guides and resources for setting up new clients and launching campaigns.",
+      "icon": "💡"
+    },
+    {
+      "name": "Client IO Tracker",
+      "url": "https://docs.google.com/spreadsheets/d/1u0qDRfJbVG8d9gAiBFanJf5TLCwCOt1egtnzi-Wex4w/edit?gid=1403512161#gid=1403512161",
+      "categories": [
+        "guide"
+      ],
+      "description": "Track client insertion orders, campaign details, approvals, and deadlines.",
+      "icon": "✈️"
+    },
+    {
+      "name": "Client Media Brief Template",
+      "url": "https://docs.google.com/document/d/15FwxQKz7syGwBMq87n_zWaiyYFrevbMa/edit",
+      "categories": [
+        "guide"
+      ],
+      "description": "Template for collecting client requirements, campaign details, goals, and media specifications.",
+      "icon": "📝"
+    },
+    {
+      "name": "Client Creative Tracker / Spec Sheet Template",
+      "url": "https://docs.google.com/spreadsheets/d/1oJlogmXu-14amr3tEiAPmqi4vnUhSAmh7tpDEdZ2flI/edit?gid=890375540#gid=890375540",
+      "categories": [
+        "guide"
+      ],
+      "description": "Track creative assets, specifications, deadlines, and approval status for client campaigns.",
+      "icon": "✈️"
+    },
+    {
+      "name": "Client Codes",
+      "url": "https://docs.google.com/spreadsheets/d/18p6NVbXgT2JeJt9EozskH1cyXv-PBwBNcCw-DanoSnI/edit?gid=0#gid=0",
+      "categories": [
+        "guide"
+      ],
+      "description": "Access and reference client-specific codes for campaign setup, tracking, and reporting.",
+      "icon": "💯"
     },
     {
       "name": "Ahrefs",
